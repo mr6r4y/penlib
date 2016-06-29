@@ -15,7 +15,7 @@ from logging import warning
 def mixed_content_check(wd, url, auth=None):
     if auth is not None:
         user, passwd = auth
-        url = re.sub("(https?)" + re.escape("://"), "\\1" + re.escape("%s:%s@" % (user, passwd)), url)
+        url = re.sub("(https?)" + re.escape("://"), "\\1" + "://%s:%s@" % (user, passwd), url)
     wd.get(url)
     a = wd.get_log("browser")
     for m in a:
