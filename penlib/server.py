@@ -96,7 +96,7 @@ class SavePostHTTPRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
     """Modified HTTP Server handler that saves all POST requests sent
 
     This is seen from https://github.com/sethsec/crossdomain-exploitation-framework
-    as part of exploitin xdomain vulnerability
+    as part of the exploit in xdomain vulnerability
     """
 
     def do_POST(self):
