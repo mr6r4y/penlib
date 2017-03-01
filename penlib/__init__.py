@@ -6,7 +6,6 @@ __all__ = [
     "sh",
     "str2hex",
     "dumphex",
-    "get_dw_samples",
     "session",
     "url_enc",
     "url_dec"
