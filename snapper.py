@@ -18,12 +18,12 @@ import os
 import json
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-
+from distutils.spawn import find_executable
 from pwn import *
 
 
-CHROME_PATH = '/usr/bin/google-chrome'
-CHROMEDRIVER_PATH = os.path.expanduser('~/.local/bin/chromedriver')
+CHROME_PATH = find_executable('google-chrome')
+CHROMEDRIVER_PATH = find_executable('chromedriver')
 WINDOW_SIZE = "1920,1080"
 
 
