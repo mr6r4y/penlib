@@ -1,12 +1,22 @@
+import urllib
 import requests
 
 
 __all__ = [
-    "session"
+    "urlencode1",
+    "urldecode1"
 ]
 
 
-def session(auth=(), burp_proxy=False):
+def urlencode1(s):
+    return urllib.quote(s, safe="")
+
+
+def urldecode1(s):
+    return urllib.unquote(s)
+
+
+def requests_session(auth=(), burp_proxy=False):
     """Helper function to produce requests sessions
 
     Sets automatically User-Agent and Accept headers to look like a Chrome browser
@@ -33,3 +43,7 @@ def session(auth=(), burp_proxy=False):
         s.proxies = burp_proxies
 
     return s
+
+
+def setcookie_to_cookie(setcookie_txt):
+    return "Cookie: "+"; ".join([i.replace("Set-Cookie: ", "").split(";")[0] for i in setcookie_txt.split("\n")])

