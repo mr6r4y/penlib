@@ -1,3 +1,3 @@
 # penlib
 
-A Python package containing functions used during penetration testing via DreamPie or Burp
+Compilation with scripts used for security and penetration testing.
