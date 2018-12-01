@@ -20,16 +20,12 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from distutils.spawn import find_executable
 from pwn import *
+from penlib.browser import make_screenshot
 
 
 CHROME_PATH = find_executable('google-chrome')
 CHROMEDRIVER_PATH = find_executable('chromedriver')
 WINDOW_SIZE = "1920,1080"
-
-
-def make_screenshot(driver, url, snapshot_file):
-    driver.get(url)
-    driver.save_screenshot(snapshot_file)
 
 
 def get_args():
